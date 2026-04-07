@@ -9,24 +9,17 @@ class Multiplication extends Thread {
     }
 }
 
-class PrimeNumbers extends Thread {
+class EvenNumbers extends Thread {
     int n;
 
-    PrimeNumbers(int n) {
+    EvenNumbers(int n) {
         this.n = n;
     }
 
     public void run() {
-        System.out.println("Prime numbers up to " + n + ":");
-        for (int x = 2; x <= n; x++) {
-            boolean isPrime = true;
-            for (int y = 2; y <= x / 2; y++) {
-                if (x % y == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
-            if (isPrime) System.out.print(x + " ");
+        System.out.println("Even numbers up to " + n + ":");
+        for (int x = 1; x <= n; x++) {
+            if (x % 2 == 0) System.out.print(x + " ");
         }
         System.out.println();
     }
@@ -35,11 +28,11 @@ class PrimeNumbers extends Thread {
 public class ThreadClass {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter N for Primes: ");
+        System.out.print("Enter N for Even Numbers: ");
         int n = sc.nextInt();
 
         Multiplication t1 = new Multiplication();
-        PrimeNumbers t2 = new PrimeNumbers(n);
+        EvenNumbers t2 = new EvenNumbers(n);
 
         t1.start();
         t2.start();
